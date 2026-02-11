@@ -40,7 +40,7 @@
     </div>
 
     <div class="hero-right">
-      <img id="hero-image" src="assets/bg.png" alt="Profile Image" />
+      <img id="hero-image" src="assets/.png" alt="Profile Image" />
     </div>
   </section>
 
@@ -181,14 +181,61 @@
   </div>
 </div>
 
+  <div class="project-card" 
+     data-title="Fashion Brand Landing Page"
+     data-desc="Developed a responsive fashion brand landing page using Angular and TypeScript, inspired by modern luxury fashion websites. The application dynamically renders collections, brand information, and visual content from a structured JSON data source, allowing seamless updates without modifying the UI structure.
 
+The project follows a component-based architecture using Angular standalone components, with a clear separation between layout elements (header, navigation, footer) and content sections (hero banner, collections, brand story, highlights). Responsive design techniques such as Flexbox, media queries, and fluid images were implemented to ensure a smooth browsing experience across desktop, tablet, and mobile devices."
+     data-images="assets/projects/1.jpg,assets/projects/2.jpg,assets/projects/3.jpg,assets/projects/4.jpg,assets/projects/5.jpg"
+     data-tech="Angular, TypeScript, HTML, CSS/SCSS, JSON, Responsive Web Design">
+  
+  <img src="assets/projects/1.jpg" alt="Fashion Brand Landing Page">
+  <div class="project-overlay">
+    <h3>Fashion Brand Landing Page</h3>
+  </div>
+  </div>
 
-    <a href="projects/project2.html" class="project-card">
-      <img src="assets/bg2.jpg" alt="Project 2">
-      <div class="project-overlay">
-        <h3>Branding & Illustration Design</h3>
-      </div>
-    </a>
+    <div class="project-card" 
+     data-title="Car Rental System"
+     data-desc="A user-friendly Android application that enables users to rent cars seamlessly. All rental data is securely stored and managed in Firebase, ensuring real-time updates and reliability. Built using Flutter for a smooth cross-platform experience and Firebase for backend data management."
+     data-images="assets/projects/1a (1).png,assets/projects/1a (2).png,assets/projects/1a (3).png,assets/projects/1a (4).png,assets/projects/1a (5).png,assets/projects/1a (6).png,assets/projects/1a (7).png,assets/projects/1a (8).png,assets/projects/1a (9).png"
+     data-tech="Flutter, Dart, Firebase (Firestore, Authentication, Storage), Responsive UI">
+  
+  <img src="assets/projects/1a (1).png" alt="Car Rental System">
+  <div class="project-overlay">
+    <h3>Car Rental System</h3>
+  </div>
+  </div>
+
+    <div class="project-card" 
+     data-title="Guard Attendance Application"
+     data-desc="A GPS and API-based mobile application that allows real-time tracking and syncing of guard attendance. Developed the front-end using Flutter with GetX for state management, integrating REST APIs to communicate with the backend and ensure accurate, up-to-date attendance data."
+     data-images="assets/projects/1b (2).png,assets/projects/1b (5).png,assets/projects/1b (4).png,assets/projects/1b (3).png,assets/projects/1b (1).png"
+     data-tech="Flutter, Dart, GetX, REST API, GPS, QR Scanner API, Responsive UI">
+  
+  <img src="assets/projects/1b (2).png" alt="Guard Attendance Application">
+  <div class="project-overlay">
+    <h3>Guard Attendance Application</h3>
+  </div>
+  </div>
+
+  <div class="project-card" 
+     data-title="Staff and Merchant Meals Coupon Application"
+     data-desc="A dual-user mobile application designed for staff and merchants to manage meal subsidies efficiently. Developed using Flutter with GetX for state management and integrated REST API for backend communication.
+
+Merchant: Top up staff meal credits via QR code scanning, track daily/monthly transactions, and view top-up summaries.
+
+Staff: View subsidy balance, top-up history, and total transactions received.
+
+Both users can access detailed transaction history for transparency and record-keeping."
+     data-images="assets/projects/1c (1).png,assets/projects/1c (2).png,assets/projects/1c (3).png,assets/projects/1c (4).png,assets/projects/1c (5).png,assets/projects/1c (6).png"
+     data-tech="Flutter, Dart, GetX, REST API, QR Scanner API, Responsive UI">
+  
+  <img src="assets/projects/1c (1).png" alt="Staff and Merchant Meals Coupon Application">
+  <div class="project-overlay">
+    <h3>Staff and Merchant Meals Coupon Application</h3>
+  </div>
+  </div>
 
     <a href="projects/project3.html" class="project-card">
       <img src="assets/bg.png" alt="Project 3">
@@ -272,23 +319,41 @@
 
 <div id="projectModal" class="modal">
   <div class="modal-content">
-    <span class="close-btn">&times;</span>
 
-    <h2 id="modalTitle"></h2>
+    <button class="close-btn">&times;</button>
 
-    <!-- Video -->
-    <video id="modalVideo" controls muted></video>
+    <h2 id="modalTitle" class="modal-title"></h2>
 
-    <!-- Images -->
-    <div id="modalImages" class="modal-images"></div>
+    <!-- Video (always on top if exists) -->
+    <div id="modalVideoContainer"></div>
+
+    <!-- Thumbnail images -->
+    <div id="modalGallery" class="modal-gallery"></div>
 
     <!-- Description -->
-    <p id="modalDesc"></p>
+    <div class="modal-description">
+      <p id="modalDesc"></p>
+      <p class="tech-stack">
+        <strong>Tech Stack:</strong> <span id="modalTech"></span>
+      </p>
+    </div>
 
-    <!-- Tech stack -->
-    <p><strong>Tech Stack:</strong> <span id="modalTech"></span></p>
   </div>
 </div>
+
+<!-- Fullscreen Image Slider -->
+<div id="imageViewer" class="image-viewer">
+  <span class="viewer-close">&times;</span>
+
+  <img id="viewerImage" />
+
+  <button class="nav prev">&#10094;</button>
+  <button class="nav next">&#10095;</button>
+
+  <div id="viewerDots" class="dots"></div>
+</div>
+
+
 
 
 </body>
