@@ -18,7 +18,7 @@
           Web <span>Applications</span><br />
           Frontend & Backend
         `;
-        heroImage.src = "assets/bg2.jpg";
+        heroImage.src = "assets/.jpg";
       } else {
         // Image 1 content
         introText.textContent = "HELLO! THIS IS WANIE";
@@ -26,7 +26,7 @@
           Software <span>Developer</span><br />
           Frontend & Backend
         `;
-        heroImage.src = "assets/bg.png";
+        heroImage.src = "assets/.png";
       }
 
       isFirst = !isFirst;
@@ -63,53 +63,114 @@ window.addEventListener("scroll", () => {
     }
   });
 });
+const modal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDesc = document.getElementById("modalDesc");
+const modalGallery = document.getElementById("modalGallery");
+const modalVideoContainer = document.getElementById("modalVideoContainer");
+const modalTech = document.getElementById("modalTech");
+const closeBtn = document.querySelector(".close-btn");
 
+const viewer = document.getElementById("imageViewer");
+const viewerImage = document.getElementById("viewerImage");
+const viewerClose = document.querySelector(".viewer-close");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+const dotsContainer = document.getElementById("viewerDots");
 
-  const modal = document.getElementById("projectModal");
-  const modalTitle = document.getElementById("modalTitle");
-  const modalDesc = document.getElementById("modalDesc");
-  const modalVideo = document.getElementById("modalVideo");
-  const modalImages = document.getElementById("modalImages");
-  const modalTech = document.getElementById("modalTech");
-  const closeBtn = document.querySelector(".close-btn");
+let currentImages = [];
+let currentIndex = 0;
 
-  document.querySelectorAll(".project-card").forEach(card => {
-    card.addEventListener("click", () => {
-      modal.style.display = "flex";
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "flex";
 
-      modalTitle.textContent = card.dataset.title;
-      modalDesc.textContent = card.dataset.desc;
-      modalTech.textContent = card.dataset.tech;
+    modalTitle.textContent = card.dataset.title;
+    modalDesc.textContent = card.dataset.desc;
+    modalTech.textContent = card.dataset.tech;
+    
 
-      // Video
-      if (card.dataset.video) {
-        modalVideo.src = card.dataset.video;
-        modalVideo.style.display = "block";
-        modalVideo.play();
-      } else {
-        modalVideo.style.display = "none";
-      }
+    modalGallery.innerHTML = "";
+    modalVideoContainer.innerHTML = "";
 
-      // Images
-      modalImages.innerHTML = "";
-      const images = card.dataset.images.split(",");
-      images.forEach(src => {
-        const img = document.createElement("img");
-        img.src = src;
-        modalImages.appendChild(img);
-      });
+    // Video first
+    if (card.dataset.video) {
+      const video = document.createElement("video");
+      video.src = card.dataset.video;
+      video.controls = true;
+      video.muted = true;
+      video.style.width = "100%";
+      video.style.marginBottom = "20px";
+      modalVideoContainer.appendChild(video);
+    }
+
+    // Images
+    currentImages = card.dataset.images
+      ? card.dataset.images.split(",").map(src => src.trim())
+      : [];
+
+    currentImages.forEach((src, index) => {
+      const img = document.createElement("img");
+      img.src = src;
+      img.style.cursor = "pointer";
+      img.onclick = () => openViewer(index);
+      modalGallery.appendChild(img);
     });
   });
+});
 
-  closeBtn.onclick = () => {
+closeBtn.onclick = () => {
+  modal.style.display = "none";
+  modalVideoContainer.innerHTML = "";
+};
+
+function openViewer(index) {
+  viewer.style.display = "flex";
+  currentIndex = index;
+  updateViewer();
+}
+
+function updateViewer() {
+  viewerImage.src = currentImages[currentIndex];
+  dotsContainer.innerHTML = "";
+
+  currentImages.forEach((_, i) => {
+    const dot = document.createElement("span");
+    if (i === currentIndex) dot.classList.add("active");
+    dot.onclick = () => {
+      currentIndex = i;
+      updateViewer();
+    };
+    dotsContainer.appendChild(dot);
+  });
+}
+
+prevBtn.onclick = () => {
+  currentIndex =
+    (currentIndex - 1 + currentImages.length) % currentImages.length;
+  updateViewer();
+};
+
+nextBtn.onclick = () => {
+  currentIndex =
+    (currentIndex + 1) % currentImages.length;
+  updateViewer();
+};
+
+viewerClose.onclick = () => {
+  viewer.style.display = "none";
+};
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
     modal.style.display = "none";
-    modalVideo.pause();
-    modalVideo.src = "";
-  };
+    modalVideoContainer.innerHTML = "";
+  }
+});
 
-  window.onclick = e => {
-    if (e.target === modal) {
-      modal.style.display = "none";
-      modalVideo.pause();
-    }
-  };
+viewer.addEventListener("click", (e) => {
+  if (e.target === viewer) {
+    viewer.style.display = "none";
+  }
+});
