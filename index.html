@@ -7,24 +7,25 @@
   <link rel="stylesheet" href="style.css" />
   <script src="script.js" defer></script>
 </head>
-<body>
+<b>
 
   <!-- Navbar -->
   <header class="navbar">
-    <div class="logo">WANIE..</div>
+    <div class="logo">WANIE.</div>
     <nav>
-      <a href="#" class="active">Home</a>
-      <a href="#">About</a>
-      <a href="#">Skills</a>
-      <a href="#">Services</a>
-      <a href="#">Projects</a>
-      <a href="#">Blog</a>
-      <a href="#">Contact</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience / Education </a>
+      <a href="#contact">Contact</a>
     </nav>
+
+
   </header>
 
   <!-- Hero Section -->
-  <section class="hero">
+  <section id="home" class="hero">
     <div class="hero-left">
       <p class="intro" id="intro-text">HELLO! THIS IS WANIE</p>
       <h1 id="hero-title">
@@ -42,6 +43,253 @@
       <img id="hero-image" src="assets/bg.png" alt="Profile Image" />
     </div>
   </section>
+
+  <section id="about" class="about-section">
+  <div class="about-container">
+
+    <!-- Left Image -->
+    <div class="about-image">
+      <img src="assets/about.png" alt="About Image">
+    </div>
+
+    <!-- Right Content -->
+    <div class="about-content">
+      <p class="section-label">MY INTRO</p>
+      <h2>About Me</h2>
+
+      <p class="about-desc">
+        I am a software developer with prior experience as an MIS Engineer, where I worked with system support, data management, and internal applications. I enjoy building practical web applications, focusing on clean UI, structured logic, and solutions that align with real business needs.
+      </p>
+
+      <div class="about-info">
+        <p><strong>Name:</strong> <span>Siti Nursyazwanie Izzati Binti Mewahna</span></p>
+        <p><strong>Address:</strong> <span>Kelantan, Malaysia</span></p>
+        <p><strong>Email:</strong> <span>sywanie29@email.com</span></p>
+        <p><strong>Phone:</strong> <span>+60 1796 91319</span></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="skills" class="skills-section">
+  <p class="section-label center">SKILLS</p>
+  <h2 class="center">My Skills</h2>
+  <p class="skills-desc center">
+  These are some of the technologies and tools I have used in real projects,
+  coursework, and self-learning. I focus on building responsive interfaces, handling data efficiently,
+  and continuously improving my technical skills.  </p>
+
+  <div class="skills-grid">
+
+    <!-- Skill Card -->
+    <div class="skill-card">
+      <h4>PHP</h4>
+      <div class="circle" style="--percent:95">
+        <svg>
+          <circle cx="60" cy="60" r="54"></circle>
+          <circle cx="60" cy="60" r="54"></circle>
+        </svg>
+        <span>85%</span>
+      </div>
+      <!-- <div class="skill-footer">
+        <span>28%<br><small>Last week</small></span>
+        <span>60%<br><small>Last month</small></span>
+      </div> -->
+    </div>
+
+    <div class="skill-card">
+      <h4>HTML</h4>
+      <div class="circle" style="--percent:98">
+        <svg>
+          <circle cx="60" cy="60" r="54"></circle>
+          <circle cx="60" cy="60" r="54"></circle>
+        </svg>
+        <span>98%</span>
+      </div>
+    </div>
+
+    <div class="skill-card">
+      <h4>CSS</h4>
+      <div class="circle" style="--percent:68">
+        <svg>
+          <circle cx="60" cy="60" r="54"></circle>
+          <circle cx="60" cy="60" r="54"></circle>
+        </svg>
+        <span>68%</span>
+      </div>
+      
+    </div>
+
+    <div class="skill-card">
+      <h4>JavaScript</h4>
+      <div class="circle" style="--percent:92">
+        <svg>
+          <circle cx="60" cy="60" r="54"></circle>
+          <circle cx="60" cy="60" r="54"></circle>
+        </svg>
+        <span>92%</span>
+      </div>
+     
+    </div>
+
+    <div class="skill-card">
+      <h4>MySQL</h4>
+      <div class="circle" style="--percent:83">
+        <svg>
+          <circle cx="60" cy="60" r="54"></circle>
+          <circle cx="60" cy="60" r="54"></circle>
+        </svg>
+        <span>83%</span>
+      </div>
+     
+    </div>
+
+    <div class="skill-card">
+      <h4>Flutter</h4>
+      <div class="circle" style="--percent:95">
+        <svg>
+          <circle cx="60" cy="60" r="54"></circle>
+          <circle cx="60" cy="60" r="54"></circle>
+        </svg>
+        <span>95%</span>
+      </div>
+      
+    </div>
+
+  </div>
+</section>
+
+<section id="projects" class="projects-section">
+  <p class="section-label center">ACCOMPLISHMENTS</p>
+  <h2 class="center">Our Projects</h2>
+  <p class="projects-desc center">
+  A collection of projects that showcase my experience in developing web systems, solving real-world problems, and applying both frontend and backend skills.  </p>
+
+  <div class="projects-grid">
+
+   <div class="project-card" 
+     data-title="3D Data Visualization Web Application"
+     data-desc="An interactive, browser-based 3D data visualization platform that transforms structured spreadsheet data into immersive spatial layouts. Key features include multiple 3D layouts (table, sphere, double helix, grid) with smooth transitions, conditional visual styling, interactive camera controls, and real-time data fetching via Google Sheets API with secure OAuth 2.0 authentication."
+     data-video="assets/projects/3d-visualization.mp4"
+     data-images="assets/projects/sphere.png,assets/projects/grid.png,assets/projects/table.png"
+     data-tech="HTML5, CSS3, JavaScript (ES Modules), Three.js (CSS3DRenderer), Google Sheets API, Google OAuth 2.0">
+  
+  <img src="assets/projects/sphere.png" alt="3D Data Visualization Project">
+  <div class="project-overlay">
+    <h3>3D Data Visualization Web Application</h3>
+  </div>
+</div>
+
+
+
+    <a href="projects/project2.html" class="project-card">
+      <img src="assets/bg2.jpg" alt="Project 2">
+      <div class="project-overlay">
+        <h3>Branding & Illustration Design</h3>
+      </div>
+    </a>
+
+    <a href="projects/project3.html" class="project-card">
+      <img src="assets/bg.png" alt="Project 3">
+      <div class="project-overlay">
+        <h3>Business Report System</h3>
+      </div>
+    </a>
+
+    <a href="projects/project4.html" class="project-card">
+      <img src="assets/bg2.jpg" alt="Project 4">
+        <div class="project-overlay">
+          <h3>UX Research & Strategy</h3>
+        </div>
+    </a>
+
+  </div>
+</section>
+
+<section id="experience">
+  <p class="section-label center">EXPERIENCE & EDUCATION</p>
+  <h2 class="center">My Experience</h2>
+
+  <div class="timeline">
+
+    <!-- Item -->
+    <div class="timeline-item">
+      <div class="timeline-date">2024 — Present</div>
+
+      <div class="timeline-content">
+        <h3>
+          Senior Frontend Engineer, Accessibility · Klaviyo
+          <span class="external">↗</span>
+        </h3>
+
+        <p>
+          Build and maintain critical components used to construct the
+          frontend across the whole product. Work closely with cross-functional
+          teams to implement and advocate for best practices in web accessibility.
+        </p>
+
+        <div class="tags">
+          <span>JavaScript</span>
+          <span>TypeScript</span>
+          <span>React</span>
+          <span>Storybook</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Item -->
+    <div class="timeline-item">
+      <div class="timeline-date">2018 — 2024</div>
+
+      <div class="timeline-content">
+        <h3>
+          Lead Engineer · Upstatement
+          <span class="external">↗</span>
+        </h3>
+
+        <p>
+          Build, style, and ship high-quality websites, design systems, and
+          mobile apps. Provide leadership through collaboration and development
+          of internal tools.
+        </p>
+
+        <div class="tags">
+          <span>JavaScript</span>
+          <span>TypeScript</span>
+          <span>HTML & SCSS</span>
+          <span>React</span>
+          <span>Next.js</span>
+          <span>Node.js</span>
+          <span>PHP</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<div id="projectModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn">&times;</span>
+
+    <h2 id="modalTitle"></h2>
+
+    <!-- Video -->
+    <video id="modalVideo" controls muted></video>
+
+    <!-- Images -->
+    <div id="modalImages" class="modal-images"></div>
+
+    <!-- Description -->
+    <p id="modalDesc"></p>
+
+    <!-- Tech stack -->
+    <p><strong>Tech Stack:</strong> <span id="modalTech"></span></p>
+  </div>
+</div>
+
 
 </body>
 </html>
