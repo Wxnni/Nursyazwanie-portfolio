@@ -69,6 +69,7 @@ const modalDesc = document.getElementById("modalDesc");
 const modalGallery = document.getElementById("modalGallery");
 const modalVideoContainer = document.getElementById("modalVideoContainer");
 const modalTech = document.getElementById("modalTech");
+const modalRemark = document.getElementById("modalRemark");
 const closeBtn = document.querySelector(".close-btn");
 
 const viewer = document.getElementById("imageViewer");
@@ -89,6 +90,8 @@ document.querySelectorAll(".project-card").forEach(card => {
     modalTitle.textContent = card.dataset.title;
     modalDesc.textContent = card.dataset.desc;
     modalTech.textContent = card.dataset.tech;
+    modalRemark.textContent = card.dataset.remark || "—";
+
     
 
     modalGallery.innerHTML = "";
