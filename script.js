@@ -1,6 +1,5 @@
   const introText = document.getElementById("intro-text");
   const heroTitle = document.getElementById("hero-title");
-  const heroImage = document.getElementById("hero-image");
 
   let isFirst = true;
 
@@ -8,7 +7,6 @@
     // Fade out
     introText.classList.add("fade");
     heroTitle.classList.add("fade");
-    heroImage.style.opacity = "0";
 
     setTimeout(() => {
       if (isFirst) {
@@ -18,7 +16,6 @@
           Web <span>Applications</span><br />
           Frontend & Backend
         `;
-        heroImage.src = "assets/.jpg";
       } else {
         // Image 1 content
         introText.textContent = "HELLO! THIS IS WANIE";
@@ -26,7 +23,6 @@
           Software <span>Developer</span><br />
           Frontend & Backend
         `;
-        heroImage.src = "assets/.png";
       }
 
       isFirst = !isFirst;
@@ -34,7 +30,6 @@
       // Fade in
       introText.classList.remove("fade");
       heroTitle.classList.remove("fade");
-      heroImage.style.opacity = "1";
     }, 600);
 
   }, 4000); // change every 4 seconds
@@ -175,5 +170,115 @@ modal.addEventListener("click", (e) => {
 viewer.addEventListener("click", (e) => {
   if (e.target === viewer) {
     viewer.style.display = "none";
+  }
+});
+
+// Script for skills section animation
+
+const skillSection = document.querySelector("#skills");
+const circles = document.querySelectorAll(".circle");
+
+let skillsAnimated = false;
+
+function animateSkills() {
+  if (skillsAnimated) return;
+
+  circles.forEach(circle => {
+    const percent = parseInt(circle.style.getPropertyValue("--percent"));
+    const progressCircle = circle.querySelector("circle:last-child");
+    const number = circle.querySelector("span");
+
+    const radius = 54;
+    const circumference = 2 * Math.PI * radius;
+
+    let start = null;
+    const duration = 1800; // 1.8 seconds
+
+    function animate(timestamp) {
+      if (!start) start = timestamp;
+      const progress = timestamp - start;
+      const easeOut = 1 - Math.pow(1 - progress / duration, 3);
+
+      const currentPercent = Math.min(percent * easeOut, percent);
+      const offset =
+        circumference - (circumference * currentPercent) / 100;
+
+      progressCircle.style.strokeDashoffset = offset;
+      number.textContent = Math.floor(currentPercent) + "%";
+
+      if (progress < duration) {
+        requestAnimationFrame(animate);
+      } else {
+        number.textContent = percent + "%";
+      }
+    }
+
+    requestAnimationFrame(animate);
+  });
+
+  skillsAnimated = true;
+}
+
+// Trigger when section enters view
+window.addEventListener("scroll", () => {
+  const sectionTop = skillSection.offsetTop;
+  const sectionHeight = skillSection.offsetHeight;
+
+  if (
+    window.scrollY + window.innerHeight >
+    sectionTop + sectionHeight / 3
+  ) {
+    animateSkills();
+  }
+});
+
+// Script for about section animation
+const aboutSection = document.querySelector("#about");
+const aboutContent = document.querySelector(".about-content");
+
+let aboutAnimated = false;
+
+window.addEventListener("scroll", () => {
+  if (aboutAnimated) return;
+
+  const sectionTop = aboutSection.offsetTop;
+  const triggerPoint = window.scrollY + window.innerHeight;
+
+  if (triggerPoint > sectionTop + 100) {
+    aboutContent.classList.add("show");
+    aboutAnimated = true;
+  }
+});
+
+const skillsHeader = document.querySelectorAll(
+  ".skills-section .section-label, .skills-section h2, .skills-section .skills-desc"
+);
+
+const projectsHeader = document.querySelectorAll(
+  ".projects-section .section-label, .projects-section h2, .projects-section .projects-desc"
+);
+
+// Animation for skills and projects headers
+let skillsHeaderAnimated = false;
+let projectsHeaderAnimated = false;
+
+window.addEventListener("scroll", () => {
+  const triggerPoint = window.scrollY + window.innerHeight;
+
+  const skillsTop = document.querySelector("#skills").offsetTop;
+  const projectsTop = document.querySelector("#projects").offsetTop;
+
+  if (!skillsHeaderAnimated && triggerPoint > skillsTop + 100) {
+    skillsHeader.forEach((el, i) => {
+      setTimeout(() => el.classList.add("animate-in"), i * 150);
+    });
+    skillsHeaderAnimated = true;
+  }
+
+  if (!projectsHeaderAnimated && triggerPoint > projectsTop + 100) {
+    projectsHeader.forEach((el, i) => {
+      setTimeout(() => el.classList.add("animate-in"), i * 150);
+    });
+    projectsHeaderAnimated = true;
   }
 });
