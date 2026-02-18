@@ -4,20 +4,17 @@
   let isFirst = true;
 
   setInterval(() => {
-    // Fade out
     introText.classList.add("fade");
     heroTitle.classList.add("fade");
 
     setTimeout(() => {
       if (isFirst) {
-        // Image 2 content
         introText.textContent = "I BUILD";
         heroTitle.innerHTML = `
           Web <span>Applications</span><br />
           Frontend & Backend
         `;
       } else {
-        // Image 1 content
         introText.textContent = "HELLO! THIS IS WANIE";
         heroTitle.innerHTML = `
           Software <span>Developer</span><br />
@@ -27,12 +24,11 @@
 
       isFirst = !isFirst;
 
-      // Fade in
       introText.classList.remove("fade");
       heroTitle.classList.remove("fade");
     }, 600);
 
-  }, 4000); // change every 4 seconds
+  }, 4000); 
 
 
 const sections = document.querySelectorAll("section[id]");
@@ -92,7 +88,6 @@ document.querySelectorAll(".project-card").forEach(card => {
     modalGallery.innerHTML = "";
     modalVideoContainer.innerHTML = "";
 
-    // Video first
     if (card.dataset.video) {
       const video = document.createElement("video");
       video.src = card.dataset.video;
@@ -103,7 +98,6 @@ document.querySelectorAll(".project-card").forEach(card => {
       modalVideoContainer.appendChild(video);
     }
 
-    // Images
     currentImages = card.dataset.images
       ? card.dataset.images.split(",").map(src => src.trim())
       : [];
@@ -192,7 +186,7 @@ function animateSkills() {
     const circumference = 2 * Math.PI * radius;
 
     let start = null;
-    const duration = 1800; // 1.8 seconds
+    const duration = 1800; 
 
     function animate(timestamp) {
       if (!start) start = timestamp;
@@ -282,3 +276,10 @@ window.addEventListener("scroll", () => {
     projectsHeaderAnimated = true;
   }
 });
+
+const hamburger = document.getElementById("hamburger");
+  const navMenu = document.getElementById("nav-menu");
+
+  hamburger.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+  });

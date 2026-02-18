@@ -10,7 +10,6 @@ body {
   color: #000;
 }
 
-/* Sticky Header */
 header {
   position: sticky;
   top: 0;
@@ -19,13 +18,11 @@ header {
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
-/* Navbar links */
 nav a {
   position: relative;
   padding-bottom: 6px;
 }
 
-/* Active link style (like your image) */
 nav a.active {
   color: #b6b98c;
 }
@@ -41,7 +38,6 @@ nav a.active::after {
 }
 
 
-/* Navbar */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -67,7 +63,6 @@ nav a.active {
   padding-bottom: 4px;
 }
 
-/* Hero Section */
 .hero {
   display: flex;
   align-items: center;
@@ -132,7 +127,6 @@ nav a.active {
 }
 
 
-/* Fade animation */
 .fade {
   opacity: 0;
   transition: opacity 0.6s ease-in-out;
@@ -142,17 +136,14 @@ nav a.active {
   opacity: 1;
 }
 
-/* Image transition */
 .hero-right img {
   transition: opacity 0.6s ease-in-out;
 }
 
-/* Smooth scroll */
 html {
   scroll-behavior: smooth;
 }
 
-/* About Section */
 .about-section {
   padding: 120px 80px;
   background: #f4f4f4;
@@ -168,12 +159,10 @@ html {
   transition: all 0.9s ease;
 }
 
-/* Text starts right */
 .about-content {
   transform: translateX(100px);
 }
 
-/* Active animation */
 .about-content.show {
   opacity: 1;
   transform: translateX(0);
@@ -246,14 +235,12 @@ html {
   max-width: 600px;
 }
 
-/* Grid */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 
-/* Card */
 .skill-card {
   background: #fff;
   padding: 35px;
@@ -266,7 +253,6 @@ html {
   margin-bottom: 20px;
 }
 
-/* Circle progress */
 .circle {
   position: relative;
   width: 120px;
@@ -293,7 +279,7 @@ html {
 .circle circle:last-child {
   stroke: #b6b98c;
   stroke-dasharray: 339;
-  stroke-dashoffset: 339; /* start empty */
+  stroke-dashoffset: 339; 
 }
 
 .circle span {
@@ -306,7 +292,6 @@ html {
   font-size: 20px;
 }
 
-/* Footer */
 .skill-footer {
   display: flex;
   justify-content: space-between;
@@ -318,7 +303,6 @@ html {
   color: #aaa;
 }
 
-/* Projects Section */
 .projects-section {
   padding: 120px 80px;
   background: #f4f4f4;
@@ -330,14 +314,12 @@ html {
   color: #888;
 }
 
-/* Grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 }
 
-/* Card */
 .project-card {
   position: relative;
   border-radius: 10px;
@@ -352,7 +334,6 @@ html {
   transition: transform 0.5s ease;
 }
 
-/* Overlay */
 .project-overlay {
   position: absolute;
   inset: 0;
@@ -371,7 +352,6 @@ html {
   padding: 0 20px;
 }
 
-/* Hover effects */
 .project-card:hover img {
   transform: scale(1.1);
 }
@@ -380,7 +360,6 @@ html {
   opacity: 1;
 }
 
-/* Modal background */
 .modal {
   position: fixed;
   inset: 0;
@@ -391,7 +370,6 @@ html {
   z-index: 2000;
 }
 
-/* Modal box */
 .modal-content {
   background: #ffffff;
   width: 90%;
@@ -404,7 +382,6 @@ html {
   box-shadow: 0 25px 60px rgba(0,0,0,0.2);
 }
 
-/* Close button */
 .close-btn {
   position: absolute;
   top: 20px;
@@ -419,7 +396,6 @@ html {
   cursor: pointer;
 }
 
-/* Title */
 .modal-title {
   text-align: center;
   font-size: 28px;
@@ -427,7 +403,6 @@ html {
   letter-spacing: 1px;
 }
 
-/* Gallery grid */
 .modal-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -437,12 +412,10 @@ html {
 
 .modal-gallery img {
   width: 100%;
-  height: 220px;          /* fixed height */
-  object-fit: cover;      /* crop nicely */
+  height: 220px;          
+  object-fit: cover;      
   border-radius: 10px;
 }
-
-
 
 .modal-gallery video {
   width: 100%;
@@ -450,7 +423,6 @@ html {
   object-fit: cover;
 }
 
-/* Description */
 .modal-description {
   line-height: 1.7;
   color: #545454;
@@ -509,7 +481,6 @@ html {
   background: rgba(255,255,255,0.08);
 }
 
-/* Mobile */
 @media (max-width: 768px) {
   .timeline-item {
     grid-template-columns: 1fr;
@@ -520,7 +491,6 @@ html {
   }
 }
 
-/* Fullscreen viewer */
 .image-viewer {
   position: fixed;
   inset: 0;
@@ -539,7 +509,6 @@ html {
   transition: opacity 0.3s ease;
 }
 
-/* Close button */
 .viewer-close {
   position: absolute;
   top: 30px;
@@ -549,7 +518,6 @@ html {
   cursor: pointer;
 }
 
-/* Navigation arrows */
 .nav {
   position: absolute;
   top: 50%;
@@ -575,20 +543,17 @@ html {
 .prev { left: 40px; }
 .next { right: 40px; }
 
-/* Hover effect */
 .nav:hover {
   background: white;
   color: black;
   transform: translateY(-50%) scale(1.1);
 }
 
-/* Active click effect */
 .nav:active {
   transform: translateY(-50%) scale(0.95);
 }
 
 
-/* Dots */
 .dots {
   margin-top: 20px;
 }
@@ -655,4 +620,142 @@ html {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+
+/*Mobile Responsive Styles*/
+
+/*  Tablet  */
+@media (max-width: 992px) {
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+
+/*  Mobile  */
+@media (max-width: 768px) {
+
+  
+  .navbar {
+    padding: 20px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  
+  .hero {
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .hero-left {
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 36px;
+  }
+
+  .buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  
+  .about-section {
+    padding: 80px 20px;
+  }
+
+  
+  .skills-section {
+    padding: 80px 20px;
+  }
+
+ 
+  .projects-section {
+    padding: 80px 20px;
+  }
+
+  
+  .contact-info {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+}
+
+
+/*  Small Phones  */
+@media (max-width: 480px) {
+
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-left h1 {
+    font-size: 28px;
+  }
+
+  .contact-title {
+    font-size: 28px;
+  }
+
+}
+
+/* Hamburger Menu Styles */
+
+.hamburger {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+ nav#nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    background: #f5f5f5; 
+    color: #111;        
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 200px;
+    padding: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-radius: 8px;  
+  }
+
+  nav#nav-menu a {
+    color: #111; 
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  nav#nav-menu.active {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    font-size: 24px;
+  }
+
 }

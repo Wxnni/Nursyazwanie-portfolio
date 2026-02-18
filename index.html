@@ -8,21 +8,23 @@
   <script src="script.js" defer></script>
 </head>
 <b>
+<!-- Navbar -->
+<header class="navbar">
+  <div class="logo">WANIE.</div>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">WANIE.</div>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#experience">Experience / Education </a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <nav id="nav-menu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience / Education </a>
+    <a href="#contact">Contact</a>
+  </nav>
 
-
-  </header>
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
+</header>
 
   <!-- Hero Section -->
   <section id="home" class="hero">
@@ -455,6 +457,8 @@ Both users can access detailed transaction history for transparency and record-k
   </div>
 </section>
 
+<!-- Modal Section -->
+
 <div id="projectModal" class="modal">
   <div class="modal-content">
 
@@ -462,13 +466,10 @@ Both users can access detailed transaction history for transparency and record-k
 
     <h2 id="modalTitle" class="modal-title"></h2>
 
-    <!-- Video (always on top if exists) -->
     <div id="modalVideoContainer"></div>
 
-    <!-- Thumbnail images -->
     <div id="modalGallery" class="modal-gallery"></div>
 
-    <!-- Description -->
     <div class="modal-description">
       <p id="modalDesc"></p>
       <p class="tech-stack">
@@ -491,9 +492,6 @@ Both users can access detailed transaction history for transparency and record-k
 
   <div id="viewerDots" class="dots"></div>
 </div>
-
-
-
 
 </body>
 </html>
