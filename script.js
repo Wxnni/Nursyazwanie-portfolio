@@ -1,34 +1,32 @@
-  const introText = document.getElementById("intro-text");
-  const heroTitle = document.getElementById("hero-title");
+const introText = document.getElementById("intro-text");
+const heroTitle = document.getElementById("hero-title");
+let isFirst = true;
 
-  let isFirst = true;
+function switchHeroText() {
+  introText.classList.add("fade");
+  heroTitle.classList.add("fade");
 
-  setInterval(() => {
-    introText.classList.add("fade");
-    heroTitle.classList.add("fade");
+  setTimeout(() => {
+    if (isFirst) {
+      introText.textContent = "I BUILD";
+      heroTitle.innerHTML = `
+        <div class="line line-left">Web <span>Applications</span></div>
+        <div class="line line-right">Frontend & Backend</div>
+      `;
+    } else {
+      introText.textContent = "HELLO! THIS IS WANIE";
+      heroTitle.innerHTML = `
+        <div class="line line-left">Software <span>Developer</span></div>
+        <div class="line line-right">Frontend & Backend</div>
+      `;
+    }
+    isFirst = !isFirst;
+    introText.classList.remove("fade");
+    heroTitle.classList.remove("fade");
+  }, 600);
+}
 
-    setTimeout(() => {
-      if (isFirst) {
-        introText.textContent = "I BUILD";
-        heroTitle.innerHTML = `
-          Web <span>Applications</span><br />
-          Frontend & Backend
-        `;
-      } else {
-        introText.textContent = "HELLO! THIS IS WANIE";
-        heroTitle.innerHTML = `
-          Software <span>Developer</span><br />
-          Frontend & Backend
-        `;
-      }
-
-      isFirst = !isFirst;
-
-      introText.classList.remove("fade");
-      heroTitle.classList.remove("fade");
-    }, 600);
-
-  }, 4000); 
+setInterval(switchHeroText, 4000);
 
 
 const sections = document.querySelectorAll("section[id]");
@@ -283,3 +281,165 @@ const hamburger = document.getElementById("hamburger");
   hamburger.addEventListener("click", () => {
     navMenu.classList.toggle("active");
   });
+
+  //Hero Section Animation
+  const canvas = document.getElementById("hero-canvas");
+const ctx = canvas.getContext("2d");
+
+let particlesArray = [];
+const numberOfParticles = 70;
+
+const accentColor = "rgba(178, 187, 141, 0.15)"; 
+
+let mouse = {
+  x: null,
+  y: null,
+  radius: 120
+};
+
+function resizeCanvas() {
+  canvas.width = canvas.offsetWidth;
+  canvas.height = canvas.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+window.addEventListener("mousemove", function (event) {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = event.clientX - rect.left;
+  mouse.y = event.clientY - rect.top;
+});
+
+window.addEventListener("touchmove", function (event) {
+  const rect = canvas.getBoundingClientRect();
+  mouse.x = event.touches[0].clientX - rect.left;
+  mouse.y = event.touches[0].clientY - rect.top;
+});
+
+window.addEventListener("touchend", function () {
+  mouse.x = null;
+  mouse.y = null;
+});
+
+class Particle {
+  constructor() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height;
+    this.size = 2;
+    this.speedX = (Math.random() - 0.5) * 0.5;
+    this.speedY = (Math.random() - 0.5) * 0.5;
+  }
+
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+
+    if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+    if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+
+    let dx = mouse.x - this.x;
+    let dy = mouse.y - this.y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+
+    if (distance < mouse.radius) {
+      this.x -= dx * 0.01;
+      this.y -= dy * 0.01;
+    }
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+    ctx.fillStyle = accentColor;
+    ctx.fill();
+  }
+}
+
+function initParticles() {
+  particlesArray = [];
+  for (let i = 0; i < numberOfParticles; i++) {
+    particlesArray.push(new Particle());
+  }
+}
+
+function connectParticles() {
+  for (let a = 0; a < particlesArray.length; a++) {
+    for (let b = a; b < particlesArray.length; b++) {
+
+      let dx = particlesArray[a].x - particlesArray[b].x;
+      let dy = particlesArray[a].y - particlesArray[b].y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+
+      const maxDistance = 130;
+
+      if (distance < maxDistance) {
+
+        let mouseDistanceA = Math.hypot(
+          particlesArray[a].x - mouse.x,
+          particlesArray[a].y - mouse.y
+        );
+
+        let mouseDistanceB = Math.hypot(
+          particlesArray[b].x - mouse.x,
+          particlesArray[b].y - mouse.y
+        );
+
+        let opacity = 0.08; 
+
+        if (mouseDistanceA < 150 || mouseDistanceB < 150) {
+          opacity = 0.25; 
+        }
+
+        ctx.beginPath();
+        ctx.strokeStyle = `rgba(178, 187, 141, ${opacity})`;
+        ctx.lineWidth = 0.6;
+        ctx.moveTo(particlesArray[a].x, particlesArray[a].y);
+        ctx.lineTo(particlesArray[b].x, particlesArray[b].y);
+        ctx.stroke();
+      }
+    }
+  }
+}
+
+function animateParticles() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  for (let i = 0; i < particlesArray.length; i++) {
+    particlesArray[i].update();
+    particlesArray[i].draw();
+  }
+
+  connectParticles();
+  requestAnimationFrame(animateParticles);
+}
+
+initParticles();
+animateParticles();
+
+  const items = document.querySelectorAll('.timeline-item');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+
+  // Contact section animation
+
+  const contactTitle = document.querySelector('.contact-title');
+
+let contactObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      contactTitle.classList.add('active');  
+      contactObserver.unobserve(contactTitle); 
+    }
+  });
+}, { threshold: 0.5 });
+
+contactObserver.observe(contactTitle);
